@@ -14,17 +14,17 @@ class AuthStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ClientAuthenticate = channel.unary_unary(
-                '/seekret.auth.Auth/ClientAuthenticate',
-                request_serializer=seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateRequest.SerializeToString,
-                response_deserializer=seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateResponse.FromString,
+        self.Authenticate = channel.unary_unary(
+                '/seekret.authentication.Auth/Authenticate',
+                request_serializer=seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
+                response_deserializer=seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
                 )
 
 
 class AuthServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ClientAuthenticate(self, request, context):
+    def Authenticate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,14 +33,14 @@ class AuthServicer(object):
 
 def add_AuthServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ClientAuthenticate': grpc.unary_unary_rpc_method_handler(
-                    servicer.ClientAuthenticate,
-                    request_deserializer=seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateRequest.FromString,
-                    response_serializer=seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateResponse.SerializeToString,
+            'Authenticate': grpc.unary_unary_rpc_method_handler(
+                    servicer.Authenticate,
+                    request_deserializer=seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateRequest.FromString,
+                    response_serializer=seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'seekret.auth.Auth', rpc_method_handlers)
+            'seekret.authentication.Auth', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -49,7 +49,7 @@ class Auth(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ClientAuthenticate(request,
+    def Authenticate(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class Auth(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/seekret.auth.Auth/ClientAuthenticate',
-            seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateRequest.SerializeToString,
-            seekret_dot_proto_dot_auth_dot_auth__pb2.ClientAuthenticateResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/seekret.authentication.Auth/Authenticate',
+            seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
+            seekret_dot_proto_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -4,40 +4,40 @@
 var grpc = require('@grpc/grpc-js');
 var seekret_proto_auth_auth_pb = require('../../../seekret/proto/auth/auth_pb.js');
 
-function serialize_seekret_auth_ClientAuthenticateRequest(arg) {
-  if (!(arg instanceof seekret_proto_auth_auth_pb.ClientAuthenticateRequest)) {
-    throw new Error('Expected argument of type seekret.auth.ClientAuthenticateRequest');
+function serialize_seekret_authentication_AuthenticateRequest(arg) {
+  if (!(arg instanceof seekret_proto_auth_auth_pb.AuthenticateRequest)) {
+    throw new Error('Expected argument of type seekret.authentication.AuthenticateRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_seekret_auth_ClientAuthenticateRequest(buffer_arg) {
-  return seekret_proto_auth_auth_pb.ClientAuthenticateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_seekret_authentication_AuthenticateRequest(buffer_arg) {
+  return seekret_proto_auth_auth_pb.AuthenticateRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_seekret_auth_ClientAuthenticateResponse(arg) {
-  if (!(arg instanceof seekret_proto_auth_auth_pb.ClientAuthenticateResponse)) {
-    throw new Error('Expected argument of type seekret.auth.ClientAuthenticateResponse');
+function serialize_seekret_authentication_AuthenticateResponse(arg) {
+  if (!(arg instanceof seekret_proto_auth_auth_pb.AuthenticateResponse)) {
+    throw new Error('Expected argument of type seekret.authentication.AuthenticateResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_seekret_auth_ClientAuthenticateResponse(buffer_arg) {
-  return seekret_proto_auth_auth_pb.ClientAuthenticateResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_seekret_authentication_AuthenticateResponse(buffer_arg) {
+  return seekret_proto_auth_auth_pb.AuthenticateResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var AuthService = exports.AuthService = {
-  clientAuthenticate: {
-    path: '/seekret.auth.Auth/ClientAuthenticate',
+  authenticate: {
+    path: '/seekret.authentication.Auth/Authenticate',
     requestStream: false,
     responseStream: false,
-    requestType: seekret_proto_auth_auth_pb.ClientAuthenticateRequest,
-    responseType: seekret_proto_auth_auth_pb.ClientAuthenticateResponse,
-    requestSerialize: serialize_seekret_auth_ClientAuthenticateRequest,
-    requestDeserialize: deserialize_seekret_auth_ClientAuthenticateRequest,
-    responseSerialize: serialize_seekret_auth_ClientAuthenticateResponse,
-    responseDeserialize: deserialize_seekret_auth_ClientAuthenticateResponse,
+    requestType: seekret_proto_auth_auth_pb.AuthenticateRequest,
+    responseType: seekret_proto_auth_auth_pb.AuthenticateResponse,
+    requestSerialize: serialize_seekret_authentication_AuthenticateRequest,
+    requestDeserialize: deserialize_seekret_authentication_AuthenticateRequest,
+    responseSerialize: serialize_seekret_authentication_AuthenticateResponse,
+    responseDeserialize: deserialize_seekret_authentication_AuthenticateResponse,
   },
 };
 

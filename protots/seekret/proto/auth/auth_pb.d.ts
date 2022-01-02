@@ -1,9 +1,9 @@
-// package: seekret.auth
+// package: seekret.authentication
 // file: seekret/proto/auth/auth.proto
 
 import * as jspb from "google-protobuf";
 
-export class ClientCredentials extends jspb.Message {
+export class Credentials extends jspb.Message {
   getClientId(): string;
   setClientId(value: string): void;
 
@@ -11,16 +11,16 @@ export class ClientCredentials extends jspb.Message {
   setClientSecret(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClientCredentials.AsObject;
-  static toObject(includeInstance: boolean, msg: ClientCredentials): ClientCredentials.AsObject;
+  toObject(includeInstance?: boolean): Credentials.AsObject;
+  static toObject(includeInstance: boolean, msg: Credentials): Credentials.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ClientCredentials, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClientCredentials;
-  static deserializeBinaryFromReader(message: ClientCredentials, reader: jspb.BinaryReader): ClientCredentials;
+  static serializeBinaryToWriter(message: Credentials, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Credentials;
+  static deserializeBinaryFromReader(message: Credentials, reader: jspb.BinaryReader): Credentials;
 }
 
-export namespace ClientCredentials {
+export namespace Credentials {
   export type AsObject = {
     clientId: string,
     clientSecret: string,
@@ -51,45 +51,45 @@ export namespace JWTDetails {
   }
 }
 
-export class ClientAuthenticateRequest extends jspb.Message {
+export class AuthenticateRequest extends jspb.Message {
   hasClientCredentials(): boolean;
   clearClientCredentials(): void;
-  getClientCredentials(): ClientCredentials | undefined;
-  setClientCredentials(value?: ClientCredentials): void;
+  getClientCredentials(): Credentials | undefined;
+  setClientCredentials(value?: Credentials): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClientAuthenticateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ClientAuthenticateRequest): ClientAuthenticateRequest.AsObject;
+  toObject(includeInstance?: boolean): AuthenticateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: AuthenticateRequest): AuthenticateRequest.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ClientAuthenticateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClientAuthenticateRequest;
-  static deserializeBinaryFromReader(message: ClientAuthenticateRequest, reader: jspb.BinaryReader): ClientAuthenticateRequest;
+  static serializeBinaryToWriter(message: AuthenticateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AuthenticateRequest;
+  static deserializeBinaryFromReader(message: AuthenticateRequest, reader: jspb.BinaryReader): AuthenticateRequest;
 }
 
-export namespace ClientAuthenticateRequest {
+export namespace AuthenticateRequest {
   export type AsObject = {
-    clientCredentials?: ClientCredentials.AsObject,
+    clientCredentials?: Credentials.AsObject,
   }
 }
 
-export class ClientAuthenticateResponse extends jspb.Message {
+export class AuthenticateResponse extends jspb.Message {
   hasDetails(): boolean;
   clearDetails(): void;
   getDetails(): JWTDetails | undefined;
   setDetails(value?: JWTDetails): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ClientAuthenticateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ClientAuthenticateResponse): ClientAuthenticateResponse.AsObject;
+  toObject(includeInstance?: boolean): AuthenticateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: AuthenticateResponse): AuthenticateResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ClientAuthenticateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ClientAuthenticateResponse;
-  static deserializeBinaryFromReader(message: ClientAuthenticateResponse, reader: jspb.BinaryReader): ClientAuthenticateResponse;
+  static serializeBinaryToWriter(message: AuthenticateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AuthenticateResponse;
+  static deserializeBinaryFromReader(message: AuthenticateResponse, reader: jspb.BinaryReader): AuthenticateResponse;
 }
 
-export namespace ClientAuthenticateResponse {
+export namespace AuthenticateResponse {
   export type AsObject = {
     details?: JWTDetails.AsObject,
   }

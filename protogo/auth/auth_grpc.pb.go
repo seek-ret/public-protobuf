@@ -18,7 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthClient interface {
-	ClientAuthenticate(ctx context.Context, in *ClientAuthenticateRequest, opts ...grpc.CallOption) (*ClientAuthenticateResponse, error)
+	Authenticate(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
 }
 
 type authClient struct {
@@ -29,9 +29,9 @@ func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
 	return &authClient{cc}
 }
 
-func (c *authClient) ClientAuthenticate(ctx context.Context, in *ClientAuthenticateRequest, opts ...grpc.CallOption) (*ClientAuthenticateResponse, error) {
-	out := new(ClientAuthenticateResponse)
-	err := c.cc.Invoke(ctx, "/seekret.auth.Auth/ClientAuthenticate", in, out, opts...)
+func (c *authClient) Authenticate(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
+	out := new(AuthenticateResponse)
+	err := c.cc.Invoke(ctx, "/seekret.authentication.Auth/Authenticate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c *authClient) ClientAuthenticate(ctx context.Context, in *ClientAuthentic
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility
 type AuthServer interface {
-	ClientAuthenticate(context.Context, *ClientAuthenticateRequest) (*ClientAuthenticateResponse, error)
+	Authenticate(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -50,8 +50,8 @@ type AuthServer interface {
 type UnimplementedAuthServer struct {
 }
 
-func (UnimplementedAuthServer) ClientAuthenticate(context.Context, *ClientAuthenticateRequest) (*ClientAuthenticateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ClientAuthenticate not implemented")
+func (UnimplementedAuthServer) Authenticate(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Authenticate not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 
@@ -66,20 +66,20 @@ func RegisterAuthServer(s grpc.ServiceRegistrar, srv AuthServer) {
 	s.RegisterService(&Auth_ServiceDesc, srv)
 }
 
-func _Auth_ClientAuthenticate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ClientAuthenticateRequest)
+func _Auth_Authenticate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).ClientAuthenticate(ctx, in)
+		return srv.(AuthServer).Authenticate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/seekret.auth.Auth/ClientAuthenticate",
+		FullMethod: "/seekret.authentication.Auth/Authenticate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).ClientAuthenticate(ctx, req.(*ClientAuthenticateRequest))
+		return srv.(AuthServer).Authenticate(ctx, req.(*AuthenticateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -88,12 +88,12 @@ func _Auth_ClientAuthenticate_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Auth_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "seekret.auth.Auth",
+	ServiceName: "seekret.authentication.Auth",
 	HandlerType: (*AuthServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ClientAuthenticate",
-			Handler:    _Auth_ClientAuthenticate_Handler,
+			MethodName: "Authenticate",
+			Handler:    _Auth_Authenticate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
