@@ -1,9 +1,9 @@
 syntax = "proto3";
-package seekret.auth;
+package seekret.authentication;
 
 option go_package = "github.com/seek-ret/public-protobuf/protogo/auth";
 
-message ClientCredentials {
+message Credentials {
   string client_id = 1;
   string client_secret = 2;
 }
@@ -13,14 +13,14 @@ message JWTDetails {
   string refresh_token = 2;
 }
 
-message ClientAuthenticateRequest {
-  ClientCredentials client_credentials = 1;
+message AuthenticateRequest {
+  Credentials client_credentials = 1;
 }
 
-message ClientAuthenticateResponse {
+message AuthenticateResponse {
   JWTDetails details = 1;
 }
 
 service Auth {
-  rpc ClientAuthenticate(ClientAuthenticateRequest) returns (ClientAuthenticateResponse) {}
+  rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {}
 }
