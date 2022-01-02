@@ -1,0 +1,26 @@
+syntax = "proto3";
+package seekret.api_gateway;
+
+option go_package = "github.com/seek-ret/public-protobuf/protogo/api_gateway";
+
+message WorkspaceEntry {
+  string base_dir = 1;
+  string bucket_name = 2;
+  string endpoint = 3;
+  string access_key = 4;
+  string secret_key = 5;
+  bool insecure = 6;
+  repeated string host_whitelist = 7;
+}
+
+message FetchWorkspaceConfigurationRequest {
+  string workspace = 1;
+}
+
+message FetchWorkspaceConfigurationResponse {
+  WorkspaceEntry entry = 1;
+}
+
+service ApiGateway {
+  rpc FetchWorkspaceConfiguration(FetchWorkspaceConfigurationRequest) returns (FetchWorkspaceConfigurationResponse);
+}

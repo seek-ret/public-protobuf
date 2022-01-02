@@ -1,0 +1,10 @@
+# Ignore everything
+**/*
+
+# Except for go modules
+!proto/**/*
+!protogo/**/*
+!protopy/**/*
+!protots/**/*
+!package.json
+!package-lock.json
