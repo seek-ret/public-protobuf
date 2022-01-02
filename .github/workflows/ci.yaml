@@ -1,0 +1,75 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [ '**' ]
+
+env:
+  TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: cancel redundant job
+        uses: technote-space/auto-cancel-redundant-job@v1
+
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: python caches
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: protobuf-pip-${{ hashFiles('protopy/build-requirements.txt') }}
+          restore-keys: |
+            protobuf-pip-
+
+      - name: Install python dependencies
+        run: |
+          pip install virtualenv
+          pip install requests
+          pip install -r protopy/build-requirements.txt
+
+      - name: Install go dependencies
+        run: |
+          go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+          go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+
+      - name: node cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: protobuf-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Node.js dependencies
+        run: |
+          npm install
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+          version: '3.14'
+
+      - name: generate protots
+        run: |
+          python3 generate.py --all
+
+      - name: Check no changes
+        run: |
+          if [[ $(git diff --stat proto*) != '' ]]; then
+            echo "::error ::There is a difference between your generated files to the freshly generated files"
+            git diff --stat proto*
+            exit 1
+          fi
