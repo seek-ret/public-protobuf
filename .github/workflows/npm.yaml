@@ -18,8 +18,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: guyarb/deny-not-updated-branch@v1.0.0
-
       - name: cancel redundant job
         uses: technote-space/auto-cancel-redundant-job@v1
 
