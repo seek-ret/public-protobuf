@@ -14,6 +14,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
+goog.exportSymbol('proto.seekret.api_gateway.BucketProvider', null, global);
 goog.exportSymbol('proto.seekret.api_gateway.FetchWorkspaceConfigurationRequest', null, global);
 goog.exportSymbol('proto.seekret.api_gateway.FetchWorkspaceConfigurationResponse', null, global);
 goog.exportSymbol('proto.seekret.api_gateway.WorkspaceEntry', null, global);
@@ -125,7 +126,8 @@ proto.seekret.api_gateway.WorkspaceEntry.toObject = function(includeInstance, ms
     accessKey: jspb.Message.getFieldWithDefault(msg, 4, ""),
     secretKey: jspb.Message.getFieldWithDefault(msg, 5, ""),
     insecure: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
-    hostWhitelistList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
+    hostWhitelistList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    provider: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -189,6 +191,10 @@ proto.seekret.api_gateway.WorkspaceEntry.deserializeBinaryFromReader = function(
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.addHostWhitelist(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.seekret.api_gateway.BucketProvider} */ (reader.readEnum());
+      msg.setProvider(value);
       break;
     default:
       reader.skipField();
@@ -265,6 +271,13 @@ proto.seekret.api_gateway.WorkspaceEntry.serializeBinaryToWriter = function(mess
   if (f.length > 0) {
     writer.writeRepeatedString(
       7,
+      f
+    );
+  }
+  f = message.getProvider();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      8,
       f
     );
   }
@@ -413,6 +426,24 @@ proto.seekret.api_gateway.WorkspaceEntry.prototype.addHostWhitelist = function(v
  */
 proto.seekret.api_gateway.WorkspaceEntry.prototype.clearHostWhitelistList = function() {
   return this.setHostWhitelistList([]);
+};
+
+
+/**
+ * optional BucketProvider provider = 8;
+ * @return {!proto.seekret.api_gateway.BucketProvider}
+ */
+proto.seekret.api_gateway.WorkspaceEntry.prototype.getProvider = function() {
+  return /** @type {!proto.seekret.api_gateway.BucketProvider} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.seekret.api_gateway.BucketProvider} value
+ * @return {!proto.seekret.api_gateway.WorkspaceEntry} returns this
+ */
+proto.seekret.api_gateway.WorkspaceEntry.prototype.setProvider = function(value) {
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -696,5 +727,15 @@ proto.seekret.api_gateway.FetchWorkspaceConfigurationResponse.prototype.hasEntry
   return jspb.Message.getField(this, 1) != null;
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.seekret.api_gateway.BucketProvider = {
+  GCS: 0,
+  S3: 1,
+  AZ: 2,
+  STRICT: 3
+};
 
 goog.object.extend(exports, proto.seekret.api_gateway);

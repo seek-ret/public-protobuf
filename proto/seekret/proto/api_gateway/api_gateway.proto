@@ -3,6 +3,13 @@ package seekret.api_gateway;
 
 option go_package = "github.com/seek-ret/public-protobuf/protogo/api_gateway";
 
+enum BucketProvider {
+  GCS = 0;
+  S3 = 1;
+  AZ = 2;
+  STRICT = 3;
+}
+
 message WorkspaceEntry {
   string base_dir = 1;
   string bucket_name = 2;
@@ -11,6 +18,7 @@ message WorkspaceEntry {
   string secret_key = 5;
   bool insecure = 6;
   repeated string host_whitelist = 7;
+  BucketProvider provider = 8;
 }
 
 message FetchWorkspaceConfigurationRequest {

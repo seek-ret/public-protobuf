@@ -27,6 +27,9 @@ export class WorkspaceEntry extends jspb.Message {
   setHostWhitelistList(value: Array<string>): void;
   addHostWhitelist(value: string, index?: number): string;
 
+  getProvider(): BucketProviderMap[keyof BucketProviderMap];
+  setProvider(value: BucketProviderMap[keyof BucketProviderMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WorkspaceEntry.AsObject;
   static toObject(includeInstance: boolean, msg: WorkspaceEntry): WorkspaceEntry.AsObject;
@@ -46,6 +49,7 @@ export namespace WorkspaceEntry {
     secretKey: string,
     insecure: boolean,
     hostWhitelistList: Array<string>,
+    provider: BucketProviderMap[keyof BucketProviderMap],
   }
 }
 
@@ -90,4 +94,13 @@ export namespace FetchWorkspaceConfigurationResponse {
     entry?: WorkspaceEntry.AsObject,
   }
 }
+
+export interface BucketProviderMap {
+  GCS: 0;
+  S3: 1;
+  AZ: 2;
+  STRICT: 3;
+}
+
+export const BucketProvider: BucketProviderMap;
 
