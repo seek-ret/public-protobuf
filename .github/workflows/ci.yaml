@@ -5,7 +5,7 @@ on:
     branches: [ '**' ]
 
 env:
-  TOKEN: ${{ secrets.NPM_TOKEN }}
+  TOKEN: ${{ secrets.SEEKRET_CI_TOKEN }}
 
 jobs:
   ci:
