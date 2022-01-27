@@ -10,7 +10,7 @@ on:
       - created
 
 env:
-  TOKEN: ${{ secrets.NPM_TOKEN }}
+  TOKEN: ${{ secrets.SEEKRET_CI_TOKEN }}
 
 jobs:
   npm-publish:
