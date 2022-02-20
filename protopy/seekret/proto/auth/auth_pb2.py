@@ -3,6 +3,7 @@
 # source: seekret/proto/auth/auth.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,167 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='seekret/proto/auth/auth.proto',
-  package='seekret.authentication',
-  syntax='proto3',
-  serialized_options=b'Z0github.com/seek-ret/public-protobuf/protogo/auth',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1dseekret/proto/auth/auth.proto\x12\x16seekret.authentication\"7\n\x0b\x43redentials\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\"9\n\nJWTDetails\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\"V\n\x13\x41uthenticateRequest\x12?\n\x12\x63lient_credentials\x18\x01 \x01(\x0b\x32#.seekret.authentication.Credentials\"K\n\x14\x41uthenticateResponse\x12\x33\n\x07\x64\x65tails\x18\x01 \x01(\x0b\x32\".seekret.authentication.JWTDetails2s\n\x04\x41uth\x12k\n\x0c\x41uthenticate\x12+.seekret.authentication.AuthenticateRequest\x1a,.seekret.authentication.AuthenticateResponse\"\x00\x42\x32Z0github.com/seek-ret/public-protobuf/protogo/authb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dseekret/proto/auth/auth.proto\x12\x16seekret.authentication\"7\n\x0b\x43redentials\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x15\n\rclient_secret\x18\x02 \x01(\t\"9\n\nJWTDetails\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x15\n\rrefresh_token\x18\x02 \x01(\t\"V\n\x13\x41uthenticateRequest\x12?\n\x12\x63lient_credentials\x18\x01 \x01(\x0b\x32#.seekret.authentication.Credentials\"K\n\x14\x41uthenticateResponse\x12\x33\n\x07\x64\x65tails\x18\x01 \x01(\x0b\x32\".seekret.authentication.JWTDetails2s\n\x04\x41uth\x12k\n\x0c\x41uthenticate\x12+.seekret.authentication.AuthenticateRequest\x1a,.seekret.authentication.AuthenticateResponse\"\x00\x42\x32Z0github.com/seek-ret/public-protobuf/protogo/authb\x06proto3')
 
 
 
-
-_CREDENTIALS = _descriptor.Descriptor(
-  name='Credentials',
-  full_name='seekret.authentication.Credentials',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='client_id', full_name='seekret.authentication.Credentials.client_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='client_secret', full_name='seekret.authentication.Credentials.client_secret', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=57,
-  serialized_end=112,
-)
-
-
-_JWTDETAILS = _descriptor.Descriptor(
-  name='JWTDetails',
-  full_name='seekret.authentication.JWTDetails',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='access_token', full_name='seekret.authentication.JWTDetails.access_token', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='refresh_token', full_name='seekret.authentication.JWTDetails.refresh_token', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=114,
-  serialized_end=171,
-)
-
-
-_AUTHENTICATEREQUEST = _descriptor.Descriptor(
-  name='AuthenticateRequest',
-  full_name='seekret.authentication.AuthenticateRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='client_credentials', full_name='seekret.authentication.AuthenticateRequest.client_credentials', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=173,
-  serialized_end=259,
-)
-
-
-_AUTHENTICATERESPONSE = _descriptor.Descriptor(
-  name='AuthenticateResponse',
-  full_name='seekret.authentication.AuthenticateResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='details', full_name='seekret.authentication.AuthenticateResponse.details', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=261,
-  serialized_end=336,
-)
-
-_AUTHENTICATEREQUEST.fields_by_name['client_credentials'].message_type = _CREDENTIALS
-_AUTHENTICATERESPONSE.fields_by_name['details'].message_type = _JWTDETAILS
-DESCRIPTOR.message_types_by_name['Credentials'] = _CREDENTIALS
-DESCRIPTOR.message_types_by_name['JWTDetails'] = _JWTDETAILS
-DESCRIPTOR.message_types_by_name['AuthenticateRequest'] = _AUTHENTICATEREQUEST
-DESCRIPTOR.message_types_by_name['AuthenticateResponse'] = _AUTHENTICATERESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_CREDENTIALS = DESCRIPTOR.message_types_by_name['Credentials']
+_JWTDETAILS = DESCRIPTOR.message_types_by_name['JWTDetails']
+_AUTHENTICATEREQUEST = DESCRIPTOR.message_types_by_name['AuthenticateRequest']
+_AUTHENTICATERESPONSE = DESCRIPTOR.message_types_by_name['AuthenticateResponse']
 Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
   'DESCRIPTOR' : _CREDENTIALS,
   '__module__' : 'seekret.proto.auth.auth_pb2'
@@ -202,32 +50,19 @@ AuthenticateResponse = _reflection.GeneratedProtocolMessageType('AuthenticateRes
   })
 _sym_db.RegisterMessage(AuthenticateResponse)
 
+_AUTH = DESCRIPTOR.services_by_name['Auth']
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-
-_AUTH = _descriptor.ServiceDescriptor(
-  name='Auth',
-  full_name='seekret.authentication.Auth',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=338,
-  serialized_end=453,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='Authenticate',
-    full_name='seekret.authentication.Auth.Authenticate',
-    index=0,
-    containing_service=None,
-    input_type=_AUTHENTICATEREQUEST,
-    output_type=_AUTHENTICATERESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_AUTH)
-
-DESCRIPTOR.services_by_name['Auth'] = _AUTH
-
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z0github.com/seek-ret/public-protobuf/protogo/auth'
+  _CREDENTIALS._serialized_start=57
+  _CREDENTIALS._serialized_end=112
+  _JWTDETAILS._serialized_start=114
+  _JWTDETAILS._serialized_end=171
+  _AUTHENTICATEREQUEST._serialized_start=173
+  _AUTHENTICATEREQUEST._serialized_end=259
+  _AUTHENTICATERESPONSE._serialized_start=261
+  _AUTHENTICATERESPONSE._serialized_end=336
+  _AUTH._serialized_start=338
+  _AUTH._serialized_end=453
 # @@protoc_insertion_point(module_scope)
